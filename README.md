@@ -3,6 +3,12 @@ imap-archiver
 
 Rake tasks which wrap offlineimap for the purpose of making it quick and easy to archive an IMAP mailbox
 
+Requirements
+============
+
+* Ruby
+* Rake (Tip: gem install rake)
+
 Usage
 =====
 
