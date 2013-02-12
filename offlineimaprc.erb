@@ -1,0 +1,23 @@
+[general]
+accounts = Account1
+
+[Account Account1]
+localrepository = Local
+remoterepository = Remote
+
+[Repository Local]
+type = Maildir
+localfolders = <%= ENV['user'] %>
+
+[Repository Remote]
+type = IMAP
+remotehost = imap.gmail.com
+remoteuser = <%= ENV['user'] %>
+<% unless ENV['password'].nil? %>
+remotepass = <%= ENV['password'] %>
+<% end %>
+folderfilter = lambda folder: folder in ['[Gmail]/All Mail', '[Gmail]/Sent Mail']
+ssl = yes
+maxconnections = 5
+realdelete = no
+cert_fingerprint = 6d1b5b5ee0180ab493b71d3b94534b5ab937d042
