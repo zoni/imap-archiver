@@ -1,6 +1,6 @@
 require 'erb'
 
-task :default => [:sync, :archive, :rmconfig]
+task :default => [:sync, :archive, :rmconfig, :rmmaildir]
 
 task :prepenv do
 	if ENV['user'].nil?
@@ -46,4 +46,8 @@ task :archive => :prepenv do
 		compressor = ENV['compressor'].nil? || ENV['compressor'].strip == '' ? '' : '.' << ENV['compressor']
 		sh "tar --auto-compress --create --file #{ENV['user']}.tar#{compressor} #{ENV['user']}"
 	end
+end
+
+task :rmmaildir => :sync do
+	FileUtils.rm_r ENV['user']
 end
