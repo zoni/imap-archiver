@@ -1,4 +1,5 @@
 require 'erb'
+require 'uuid'
 
 task :default => [:sync, :archive, :rmconfig, :rmmaildir]
 
@@ -14,7 +15,7 @@ end
 desc "Generate a config file for offlineimap"
 task :mkconfig => :prepenv do
 	# Used for random account number to allow multiple simultanious executions
-	random = Random.new.rand 1000000 
+	uuid = UUID.new.generate
 	config = ERB.new(File.read 'offlineimaprc.erb')
 	File.open('offlineimaprc', 'w') do |f|
 		f << config.result(binding)

@@ -7,7 +7,10 @@ Requirements
 ============
 
 * Ruby
-* Rake (Tip: gem install rake)
+* Rake
+* Uuid
+
+If you have bundle installed, just run `bundle install` to grab the necessary gems
 
 Usage
 =====
